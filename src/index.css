@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-charcoal-900 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold-400 text-charcoal-900 font-sans font-medium
+           text-sm uppercase px-8 py-4 transition-all duration-300
+           hover:bg-gold-300 hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-gold-400;
+    letter-spacing: 0.15em;
+    box-shadow: none;
+  }
+
+  .btn-gold:hover {
+    box-shadow: 0 8px 32px rgba(212, 168, 67, 0.4);
+  }
+
+  .btn-gold-outline {
+    @apply inline-flex items-center gap-2 border border-gold-400 text-gold-400 font-sans font-medium
+           text-sm uppercase px-8 py-4 transition-all duration-300
+           hover:bg-gold-400 hover:text-charcoal-900 hover:-translate-y-0.5
+           focus:outline-none;
+    letter-spacing: 0.15em;
+  }
+
+  .btn-gold-outline:hover {
+    box-shadow: 0 8px 32px rgba(212, 168, 67, 0.3);
+  }
+
+  .section-label {
+    @apply font-sans text-xs uppercase text-gold-500 mb-4 block;
+    letter-spacing: 0.2em;
+  }
+
+  .divider-gold {
+    @apply w-16 h-px bg-gold-400 my-6;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #E8C97A 0%, #D4A843 50%, #BF8C20 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-dark {
+    background: rgba(26, 24, 20, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+/* Intersection Observer animation classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
