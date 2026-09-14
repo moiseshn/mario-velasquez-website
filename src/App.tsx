@@ -311,6 +311,10 @@ function Hero() {
               id="hero-portrait"
               className="relative z-10 w-full object-cover rounded-sm shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
               style={{ aspectRatio: '3/4', objectPosition: 'center top' }}
+              width={900}
+              height={1200}
+              fetchPriority="high"
+              loading="eager"
             />
           </div>
         </div>
@@ -410,6 +414,8 @@ function TalkImage({ src, alt, className = '', delay }: { src: string; alt: stri
       <img
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
       <div className="absolute inset-0 ring-1 ring-inset ring-gold-400/0 group-hover:ring-gold-400/50 transition-all duration-300" />
@@ -466,7 +472,9 @@ function BookCard({ title, about, img, url, delay }: {
       <img
         src={img}
         alt={`Portada del libro ${title} de Mario Velásquez`}
-        className="w-40 rounded-sm shadow-[0_16px_40px_rgba(0,0,0,0.5)] mb-6"
+        loading="lazy"
+        decoding="async"
+        className="w-40 aspect-[2/3] object-cover rounded-sm shadow-[0_16px_40px_rgba(0,0,0,0.5)] mb-6"
       />
       <h3 className="font-display text-xl text-cream-50 leading-snug mb-3">{title}</h3>
       <p className="font-sans text-sm text-cream-200/60 leading-relaxed mb-8">{about}</p>
