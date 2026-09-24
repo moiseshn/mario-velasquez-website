@@ -73,6 +73,11 @@ const Icons = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   ),
+  Check: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  ),
   Instagram: () => (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -152,6 +157,14 @@ const books = [
     img: '/book-no-lo-escondas-ya-es-evidente.webp',
     url: 'https://a.co/d/0fWD2Zft',
   },
+]
+
+const editorialServices = [
+  'Corrección y edición de libros',
+  'Maquetación profesional (impreso e eBook)',
+  'Diseño de portada',
+  'Publicación en Amazon KDP',
+  'Traducción al inglés',
 ]
 
 const testimonials = [
@@ -281,7 +294,7 @@ function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left: Copy */}
         <div className="animate-fade-up">
-          <p className="section-label">Autor · Conferencista</p>
+          <p className="section-label">Conferencista · Autor · Editor</p>
           <div className="divider-gold" />
           <h1 className="font-display text-5xl sm:text-6xl xl:text-7xl font-bold text-cream-50 leading-tight mb-6">
             Transfórmate.<br />
@@ -307,7 +320,7 @@ function Hero() {
 
             <img
               src="/author-portrait.webp"
-              alt="Mario Velásquez — Conferencista y Autor"
+              alt="Mario Velásquez — Conferencista, autor y editor"
               id="hero-portrait"
               className="relative z-10 w-full object-cover rounded-sm shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
               style={{ aspectRatio: '3/4', objectPosition: 'center top' }}
@@ -486,6 +499,48 @@ function BookCard({ title, about, img, url, delay }: {
   )
 }
 
+// ─── Editorial Services ───────────────────────────────────────────────────
+function EditorialServices() {
+  const ref = useReveal()
+  return (
+    <section
+      id="editorial-services"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="reveal py-24 bg-charcoal-900 border-t border-cream-50/5 relative overflow-hidden"
+    >
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #D4A843 0%, transparent 70%)' }} />
+
+      <div className="relative max-w-2xl mx-auto px-6 text-center">
+        <p className="section-label">Servicios Editoriales</p>
+        <div className="divider-gold mx-auto" />
+        <h2 className="font-display text-4xl sm:text-5xl text-cream-50 leading-tight mb-6">
+          Cuenta tu historia <span className="italic text-gradient-gold">también</span>.
+        </h2>
+        <p className="font-sans text-cream-200/60 leading-relaxed mb-10">
+          Como Consultor Editorial Independiente te ayudo a pasar del manuscrito a libro publicado en Amazon:
+        </p>
+
+        <ul className="inline-flex flex-col gap-3 text-left mx-auto mb-12">
+          {editorialServices.map((service) => (
+            <li key={service} className="flex items-center gap-3 font-sans text-sm text-cream-200/80">
+              <span className="text-gold-400 flex-shrink-0"><Icons.Check /></span>
+              {service}
+            </li>
+          ))}
+        </ul>
+
+        <div>
+          <a href="https://wa.me/50498152453" target="_blank" rel="noopener noreferrer" id="editorial-cta"
+            className="btn-gold">
+            Escríbeme <Icons.WhatsApp />
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ─── Testimonials ─────────────────────────────────────────────────────────
 function Testimonials() {
   const ref = useReveal()
@@ -634,6 +689,7 @@ export default function App() {
         <Hero />
         <Features />
         <BooksBanner />
+        <EditorialServices />
         <Testimonials />
         <BottomCTA />
       </main>
