@@ -457,7 +457,15 @@ function BooksBanner() {
             <span className="italic text-gold-400">Una misión.</span>
           </h2>
           <p className="font-sans text-cream-200/60 leading-relaxed">
-            Los libros de Mario destilan años de experiencia en acciones prácticas y honestas, disponibles en Amazon. Cada uno te encuentra exactamente donde estás.
+            Los libros de Mario destilan años de experiencia en acciones prácticas y honestas, disponibles en{' '}
+            <a
+              href="https://www.amazon.com/author/mario.velasquez.books"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold-400 underline underline-offset-4 decoration-gold-400/40 hover:decoration-gold-400 transition-colors"
+            >
+              Amazon
+            </a>. Cada uno te encuentra exactamente donde estás.
           </p>
         </div>
 
